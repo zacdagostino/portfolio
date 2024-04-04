@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+import RadialGradient from "@/components/RadielGradient";
 
 export const metadata = {
   title: "Zac's Portfolio",
@@ -11,7 +12,10 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body>
         <div className="main">
-          <main className="app">{children}</main>
+          <main className="app">
+            <RadialGradient />
+            {children}
+          </main>
         </div>
       </body>
     </html>
