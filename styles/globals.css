@@ -2,26 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #000000;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
 }
 
+html {
+  --duration: 0.3s;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-color: #000000; */
+  background-color: #d8e0eb;
+}
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 .main {
   width: 100vw;
   min-height: 100vh;
   position: fixed;
   display: flex;
   justify-content: center;
-  padding: 120px 24px 160px 24px;
   pointer-events: none;
 }
 
 .main:before {
+  /* background: radial-gradient(circle, rgba(24, 24, 24, 0) 0, #000000 100%); */
   background: radial-gradient(circle, rgba(24, 24, 24, 0) 0, #000000 100%);
   position: absolute;
+  opacity: 0.1;
   content: "";
-  z-index: 2;
-  width: 100%;
+  z-index: -1;
+  width: 100vw;
   height: 100%;
   top: 0;
 }
@@ -29,12 +56,13 @@ body {
 .main:after {
   content: "";
   background-image: url("/assets/images/grid.svg");
-  z-index: 1;
+  z-index: -2;
   position: absolute;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   top: 0;
-  opacity: 0.4;
+  opacity: 0.6;
+  filter: invert(1);
 }
 
 .grain {
@@ -42,7 +70,8 @@ body {
   height: 300%;
   width: 300%;
   position: fixed;
-  opacity: 0.07;
+  z-index: 1;
+  opacity: 0.06;
   animation: animateGrain 8s steps(10) infinite;
 }
 
@@ -82,6 +111,10 @@ body {
   100% {
     transform: translate(-15%, -20%);
   }
+}
+
+.glow {
+  text-shadow: 1px 1px 30px #ffffff70, 1px 1px 10px #ffffff4d;
 }
 
 /* Tailwind Styles */
