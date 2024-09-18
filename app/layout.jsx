@@ -1,7 +1,5 @@
 import "@styles/globals.css";
-import RadialGradient from "@/components/RadielGradient";
 import CustomCursor from "@/components/custom-cursor";
-
 export const metadata = {
   title: "Zac's Portfolio",
   description:
@@ -12,14 +10,9 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <div className="main">
-          <main className="app">
-            <div className="grain" />
-            <RadialGradient />
-            <CustomCursor />
-            {children}
-          </main>
-        </div>
+        <div className="grain" />
+        <CustomCursor />
+        {children}
       </body>
     </html>
   );
