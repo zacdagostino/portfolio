@@ -15,7 +15,7 @@ html {
 
 body {
   /* background-color: #000000; */
-  background-color: #d8e0eb;
+  background-color: #1b1c1f;
 }
 html.lenis {
   height: auto;
@@ -62,7 +62,6 @@ html.lenis {
   height: 100%;
   top: 0;
   opacity: 0.6;
-  filter: invert(1);
 }
 
 .grain {

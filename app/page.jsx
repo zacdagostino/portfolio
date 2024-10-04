@@ -9,8 +9,8 @@ export default function Home() {
   }, []);
   return (
     <main className="app main">
-      <section className="flex justify-center items-center h-screen w-screen border border-gray-400 p-4">
-        <h1 className="glow text-black text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
+      <section className="flex justify-center items-center h-screen w-screen p-4">
+        <h1 className="glow text-white text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
           Hello, im Zac. <br /> A Fullstack developer
         </h1>
       </section>
