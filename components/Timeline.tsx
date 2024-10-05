@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ExperienceItem from './ExperienceItem';
 
 const Timeline: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // Track which item is hovered
 
   const experienceData = [
     {
@@ -18,24 +18,23 @@ const Timeline: React.FC = () => {
       stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
     },
     {
-        title: 'Computer Science Degree',
-        description: 'Studied core computer science topics with a focus on web development.',
-        date: '2020 - 2023',
-        stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
-      },
-      {
-      title: 'Computer Science Degree',
-      description: 'Studied core computer science topics with a focus on web development.',
-      date: '2020 - 2023',
-      stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
+      title: 'Freelance Web Developer',
+      description: 'Built and maintained websites for small businesses.',
+      date: 'Aug 2020 - Present',
+      stack: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
     },
     {
-        title: 'Computer Science Degree',
-        description: 'Studied core computer science topics with a focus on web development.',
-        date: '2020 - 2023',
-        stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
-      },
-    // Add more entries as needed
+      title: 'Fullstack Developer Bootcamp',
+      description: 'Completed a rigorous bootcamp focusing on MERN stack development.',
+      date: '2022',
+      stack: ['MongoDB', 'Express', 'React', 'Node.js'],
+    },
+    {
+      title: 'React Native Developer',
+      description: 'Developed mobile applications for both iOS and Android using React Native.',
+      date: 'Mar 2021 - Aug 2021',
+      stack: ['React Native', 'Expo', 'JavaScript'],
+    },
   ];
 
   return (
@@ -46,12 +45,15 @@ const Timeline: React.FC = () => {
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
           className={`timeline-item transition-transform duration-300 ease-in-out ${
-            hoveredIndex !== null && hoveredIndex !== index
-              ? 'shrink opacity-50'  // Shrink and reduce opacity for non-hovered items
-              : ''
+            hoveredIndex !== null && hoveredIndex !== index ? 'shrink opacity-50' : ''
           }`}
         >
-          <ExperienceItem {...exp} />
+          <ExperienceItem
+            title={exp.title}
+            description={exp.description}
+            date={exp.date}
+            stack={exp.stack}
+          />
         </div>
       ))}
     </div>

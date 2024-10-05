@@ -34,7 +34,9 @@ export default function Home() {
           Hello, I'm Zac. <br /> A Fullstack Developer
         </h1>
       </section>
-      <section className="h-screen w-screen justify-center items-center">
+
+      {/* Update this section to dynamically adjust its height */}
+      <section className="w-screen p-8">
         {/* Timeline Component */}
         <Timeline experiences={experienceData} />
       </section>
