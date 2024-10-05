@@ -53,29 +53,29 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, description, dat
   return (
     <div
       ref={cardRef}
-      className="experience-item relative overflow-hidden rounded-lg shadow-lg p-8 mb-12 max-w-lg mx-auto"
-      style={{ backgroundColor: '#1b1c1f', pointerEvents: 'auto' }}
+      className="experience-item relative overflow-hidden rounded-lg  p-8 mb-12 max-w-lg mx-auto"
+      style={{ pointerEvents: 'auto' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div className="shine-effect absolute inset-0 pointer-events-none"></div>
       
-      {/* Title - Bold, bright white */}
+      {/* Title */}
       <h3 className="text-2xl font-extrabold mb-4" style={{ color: '#FFFFFF', letterSpacing: '0.05em' }}>
         {title}
       </h3>
 
-      {/* Description - Softer white with a bit of opacity */}
+      {/* Description */}
       <p className="text-base mb-6" style={{ color: 'rgba(224, 224, 224, 0.8)', lineHeight: '1.75' }}>
         {description}
       </p>
 
-      {/* Date - Smaller, semi-transparent */}
+      {/* Date */}
       <p className="text-sm mb-2" style={{ color: 'rgba(229, 229, 229, 0.6)' }}>
         <strong>Date:</strong> {date}
       </p>
 
-      {/* Stack - Same treatment as date, using soft white */}
+      {/* Stack */}
       <p className="text-sm" style={{ color: 'rgba(229, 229, 229, 0.6)' }}>
         <strong>Stack:</strong> {stack.join(', ')}
       </p>

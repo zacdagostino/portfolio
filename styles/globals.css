@@ -125,9 +125,18 @@ html.lenis {
 
 
 .experience-item {
-  transition: transform 0.2s ease;
-  position: relative;
+  background-color: rgba(255, 255, 255, 0); /* Fully transparent by default */
+  border: 0.2px solid rgba(255, 255, 255, 0); /* Transparent border */
+  backdrop-filter: blur(0px); /* No blur by default */
+  transition: background-color 0.4s ease, border 0.4s ease, backdrop-filter 0.4s ease;
 }
+
+.experience-item:hover {
+  background-color: rgba(255, 255, 255, 0.027); /* Semi-transparent white on hover */
+  border: 0.2px solid rgba(255, 255, 255, 0.4); /* White border on hover */
+  backdrop-filter: blur(10px); /* Add a glass-like blur effect on hover */
+}
+
 
 .experience-item .shine-effect {
   content: '';
