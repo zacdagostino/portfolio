@@ -53,16 +53,32 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, description, dat
   return (
     <div
       ref={cardRef}
-      className="experience-item relative overflow-hidden rounded-lg shadow-lg p-6 mb-8 max-w-lg mx-auto"
+      className="experience-item relative overflow-hidden rounded-lg shadow-lg p-8 mb-12 max-w-lg mx-auto"
       style={{ backgroundColor: '#1b1c1f', pointerEvents: 'auto' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div className="shine-effect absolute inset-0 pointer-events-none"></div>
-      <h3 className="text-xl font-semibold mb-2" style={{ color: '#4FD1C5' }}>{title}</h3>
-      <p className="text-sm mb-4" style={{ color: '#9CA3AF' }}>{description}</p>
-      <p className="text-sm mb-2" style={{ color: '#C4B5FD' }}><strong>Date:</strong> {date}</p>
-      <p className="text-sm" style={{ color: '#C4B5FD' }}><strong>Stack:</strong> {stack.join(', ')}</p>
+      
+      {/* Title - Bold, bright white */}
+      <h3 className="text-2xl font-extrabold mb-4" style={{ color: '#FFFFFF', letterSpacing: '0.05em' }}>
+        {title}
+      </h3>
+
+      {/* Description - Softer white with a bit of opacity */}
+      <p className="text-base mb-6" style={{ color: 'rgba(224, 224, 224, 0.8)', lineHeight: '1.75' }}>
+        {description}
+      </p>
+
+      {/* Date - Smaller, semi-transparent */}
+      <p className="text-sm mb-2" style={{ color: 'rgba(229, 229, 229, 0.6)' }}>
+        <strong>Date:</strong> {date}
+      </p>
+
+      {/* Stack - Same treatment as date, using soft white */}
+      <p className="text-sm" style={{ color: 'rgba(229, 229, 229, 0.6)' }}>
+        <strong>Stack:</strong> {stack.join(', ')}
+      </p>
     </div>
   );
 };
