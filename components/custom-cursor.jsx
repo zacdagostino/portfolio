@@ -56,10 +56,16 @@ const CustomCursor = () => {
   return (
     <>
       <div
-        style={{ top: position.y, left: position.x }}
-        ref={cursorRef}
-        className={`p-0 fixed pointer-events-none transition-all -translate-x-1/2 -translate-y-1/2 z-50 ease-in duration-0 rounded-full w-8 h-8 border-2 border-${cursorColor} `}
-      ></div>
+  style={{
+    top: position.y,
+    left: position.x,
+    pointerEvents: "none",
+    borderColor: "#ffffff", // Use CSS variable if color is defined in Tailwind config
+  }}
+  ref={cursorRef}
+  className="p-0 fixed transition-all -translate-x-1/2 -translate-y-1/2 z-50 ease-in duration-0 rounded-full w-8 h-8 border-2"
+></div>
+
     </>
   );
 };

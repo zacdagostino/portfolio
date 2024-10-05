@@ -1,5 +1,6 @@
 import "@styles/globals.css";
 import CustomCursor from "@/components/custom-cursor";
+
 export const metadata = {
   title: "Zac's Portfolio",
   description:
@@ -9,10 +10,12 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body> {/* Disable interaction on body */}
         <div className="grain" />
         <CustomCursor />
-        {children}
+        <div> {/* Re-enable interaction on children */}
+          {children}
+        </div>
       </body>
     </html>
   );
