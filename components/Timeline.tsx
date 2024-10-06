@@ -42,8 +42,16 @@ const Timeline: React.FC = () => {
       {experienceData.map((exp, index) => (
         <div
           key={index}
-          onMouseEnter={() => setHoveredIndex(index)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          onMouseEnter={() => {
+            if (hoveredIndex !== index) {
+              setHoveredIndex(index); // Only update the state if index is different
+            }
+          }}
+          onMouseLeave={() => {
+            if (hoveredIndex !== null) {
+              setHoveredIndex(null); // Reset hover state when mouse leaves
+            }
+          }}
           className={`timeline-item transition-transform duration-300 ease-in-out ${
             hoveredIndex !== null && hoveredIndex !== index ? 'shrink opacity-50' : ''
           }`}
