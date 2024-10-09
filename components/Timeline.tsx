@@ -1,69 +1,83 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ExperienceItem from './ExperienceItem';
 
-const Timeline: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // Track which item is hovered
+interface TimelineProps {
+  experiences: Array<{ title: string; description: string; date: string; stack: string[] }>;
+}
 
-  const experienceData = [
-    {
-      title: 'Frontend Developer Intern',
-      description: 'Developed responsive UI components and collaborated with backend engineers.',
-      date: 'Jan 2023 - Jun 2023',
-      stack: ['React', 'CSS', 'JavaScript'],
-    },
-    {
-      title: 'Computer Science Degree',
-      description: 'Studied core computer science topics with a focus on web development.',
-      date: '2020 - 2023',
-      stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
-    },
-    {
-      title: 'Freelance Web Developer',
-      description: 'Built and maintained websites for small businesses.',
-      date: 'Aug 2020 - Present',
-      stack: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
-    },
-    {
-      title: 'Fullstack Developer Bootcamp',
-      description: 'Completed a rigorous bootcamp focusing on MERN stack development.',
-      date: '2022',
-      stack: ['MongoDB', 'Express', 'React', 'Node.js'],
-    },
-    {
-      title: 'React Native Developer',
-      description: 'Developed mobile applications for both iOS and Android using React Native.',
-      date: 'Mar 2021 - Aug 2021',
-      stack: ['React Native', 'Expo', 'JavaScript'],
-    },
-  ];
+const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
+  const [activeIndex, setActiveIndex] = useState(0); // Tracks the current active item
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const experienceItems = document.querySelectorAll('.experience-item-wrapper');
+      const middleOfScreen = window.innerHeight / 2;
+
+      let currentActiveIndex = 0;
+
+      // Loop through each experience item and check if it's in the middle of the screen
+      experienceItems.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect();
+      
+        // If the center of the item is near the middle of the screen, mark it as active
+        if (itemRect.top <= middleOfScreen && itemRect.bottom >= middleOfScreen) {
+          currentActiveIndex = index;
+        }
+      });
+
+      // Update active index to the current one
+      setActiveIndex(currentActiveIndex);
+
+      // Update the progress bar's height based on the active index
+      if (progressBarRef.current) {
+        const isLastItemVisible = experienceItems[experienceItems.length - 1].getBoundingClientRect().top <= middleOfScreen;
+
+        const progressHeight = isLastItemVisible ? 100 :((currentActiveIndex) / experienceItems.length) * 100;
+
+
+        progressBarRef.current.style.height = `${progressHeight}%`;
+      }
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="timeline">
-      {experienceData.map((exp, index) => (
-        <div
-          key={index}
-          onMouseEnter={() => {
-            if (hoveredIndex !== index) {
-              setHoveredIndex(index); // Only update the state if index is different
-            }
-          }}
-          onMouseLeave={() => {
-            if (hoveredIndex !== null) {
-              setHoveredIndex(null); // Reset hover state when mouse leaves
-            }
-          }}
-          className={`timeline-item transition-transform duration-300 ease-in-out ${
-            hoveredIndex !== null && hoveredIndex !== index ? 'shrink opacity-50' : ''
-          }`}
-        >
-          <ExperienceItem
-            title={exp.title}
-            description={exp.description}
-            date={exp.date}
-            stack={exp.stack}
-          />
-        </div>
-      ))}
+    <div className="timeline-container relative">
+      {/* Vertical Progress Bar */}
+      <div className="timeline-progress-bar bg-gray-500 w-1 absolute left-0 top-0 h-full">
+        <div ref={progressBarRef} className="timeline-progress bg-green-500 w-1 absolute left-0 top-0"></div>
+      </div>
+
+      <div className="experience-list relative ml-8">
+        {experiences.map((experience, index) => (
+          <div
+            key={index}
+            className={`experience-item-wrapper relative flex mb-8 ${
+              index <= activeIndex ? 'checked' : ''
+            }`} // Add 'checked' class if item is active
+          >
+            {/* Circle Indicator */}
+            <div
+              className={`timeline-circle w-4 h-4 rounded-full border-2 ${
+                index <= activeIndex ? 'checked' : ''
+              }`}
+            ></div>
+
+            {/* ExperienceItem */}
+            <div className="ml-6">
+              <ExperienceItem {...experience} />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

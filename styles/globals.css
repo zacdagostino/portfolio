@@ -154,3 +154,78 @@ html.lenis {
   opacity: .15;
 }
 
+.timeline-container {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline-progress-bar {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+
+.timeline-progress {
+  background-color: #10b981; /* Green color */
+  width: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: height 0.3s ease; /* Smooth height transition */
+}
+
+.experience-list {
+  position: relative;
+}
+
+.experience-item-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.timeline-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db; /* Default gray border */
+  background-color: #fff;
+  position: absolute;
+  left: -22px;
+  top: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for colors */
+}
+
+.timeline-circle.checked {
+  animation: checkAnimation 0.4s ease forwards; /* Apply animation */
+}
+
+@keyframes checkAnimation {
+  0% {
+    background-color: #fff;
+    border-color: #d1d5db;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3); /* Pop effect */
+  }
+  100% {
+    background-color: #10b981; /* Final green color */
+    border-color: #10b981;
+    transform: scale(1); /* Reset size */
+  }
+}
+
+
+.timeline-circle.bg-green-500 {
+  background-color: #10b981; /* Green for active circles */
+  border-color: #10b981;
+}
+
+
+
+.experience-item-wrapper.checked .timeline-circle {
+  background-color: #10b981; /* Make the circle green when checked */
+  border-color: #10b981;
+}
