@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import StackList from './StackList'; // Import the StackList component
-import { FaChevronDown } from 'react-icons/fa'; // Icons for the button
+import { FaExpandAlt  } from 'react-icons/fa'; // Icons for the button
 import Modal from './Modal'; // Import the Modal component
 import { ExperienceData } from '../types/interfaces';
 
@@ -70,36 +70,44 @@ const ExperienceItem: React.FC<ExperienceData> = ({
         initial={{ opacity: 0, y: 50, skewY: 5 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.2 }}
+        onClick={() => setIsModalOpen(true)}
       >
         {/* Button to open modal */}
         <button
           onClick={() => setIsModalOpen(true)}
           className="absolute top-3 right-3 text-gray-400 hover:text-green-500 transition duration-300 ease-in-out"
         >
-          <FaChevronDown className="h-5 w-5" />
+          <FaExpandAlt className="h-5 w-5" />
         </button>
 
         <div className="shine-effect absolute inset-0 pointer-events-none"></div>
 
-        {/* Project Name, Position, and Type */}
-        <h3 className="text-2xl font-extrabold mb-3 text-white tracking-wide">
+        {/* Project Name */}
+        <h3 className="text-3xl font-extrabold mb-4 text-white tracking-wide">
           {projectName}
         </h3>
-        <p className="text-sm mb-1 text-gray-400">
-          <strong>Position:</strong> {position}
-        </p>
-        <p className="text-sm mb-1 text-gray-400">
-          <strong>Type:</strong> {type}
-        </p>
+
+        {/* Position, Type, and Date */}
+        <div className="mb-4">
+          <div className="flex items-center mb-2 space-x-4">
+            <p className="text-base font-medium text-green-400">
+              <strong>Position:</strong> {position}
+            </p>
+            <span className="block w-1 h-1 rounded-full bg-gray-500"></span>
+            <p className="text-base font-medium text-blue-400">
+              <strong>Type:</strong> {type}
+            </p>
+          </div>
+           {/* Date */}
+   
+          <p className="text-sm text-gray-500">
+           {date}
+          </p>
+        </div>
 
         {/* Short Overview */}
         <p className="text-base mb-4 text-gray-300 leading-relaxed">
           {shortOverview}
-        </p>
-
-        {/* Date */}
-        <p className="text-sm mb-3 text-gray-500">
-          <strong>Date:</strong> {date}
         </p>
 
         {/* Stack List */}
@@ -121,7 +129,8 @@ const ExperienceItem: React.FC<ExperienceData> = ({
         stack={stack}
       />
     </>
-  );
+);
+
 };
 
 export default ExperienceItem;
