@@ -9,7 +9,7 @@ interface TimelineProps {
     type: string;
     shortOverview: string;
     projectOverview: string;
-    contributions: string[];
+    projectInfo: { title: string; list: string[] }[]; // Updated to handle projectInfo
     professionalGrowth: string;
     date: string;
     stack: string[];
@@ -20,6 +20,7 @@ interface TimelineProps {
 const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
   const [activeIndex, setActiveIndex] = useState(0); // Tracks the current active item
   const progressBarRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const handleScroll = () => {

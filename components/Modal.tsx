@@ -11,49 +11,38 @@ interface ModalProps {
   position: string;
   type: string;
   projectOverview: string;
-  contributions: string[];
+  projectInfo: { title: string; list: string[] }[]; // Updated to handle projectInfo
   professionalGrowth: string;
   date: string;
   stack: string[];
 }
 
 const Modal: React.FC<ModalProps> = ({
-    
   isOpen,
   onClose,
   projectName,
   position,
   type,
   projectOverview,
-  contributions,
+  projectInfo,
   professionalGrowth,
   date,
   stack,
 }) => {
   useEffect(() => {
     if (isOpen) {
-      // Disable scrolling on the body
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; // Disable body scrolling
     } else {
-      // Re-enable scrolling on the body
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'; // Re-enable body scrolling
     }
 
-    // Cleanup when modal is unmounted or closed
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'; // Cleanup on unmount
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
-    })();
-  }, []);
-
   const handleWheel = (event: React.WheelEvent) => {
-    event.stopPropagation(); // Stop the event from propagating to the parent
+    event.stopPropagation(); // Prevent the event from propagating to the parent
   };
 
   if (!isOpen) return null;
@@ -62,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({
     <div
       className="fixed inset-0 bg-black bg-opacity-70 z-50 backdrop-blur-md flex justify-center items-start transition-opacity duration-300 ease-in-out"
       style={{ pointerEvents: 'auto' }}
-      onWheel={handleWheel} // Ensure the modal catches the scroll wheel event
+      onWheel={handleWheel}
     >
       <motion.div
         className="bg-[#2b2c2f] rounded-lg shadow-xl p-8 md:p-12 mx-8 my-12 w-full max-w-4xl h-[90vh] relative z-50 overflow-y-auto"
@@ -110,15 +99,22 @@ const Modal: React.FC<ModalProps> = ({
           <p className="text-md text-gray-300 leading-relaxed">{projectOverview}</p>
         </div>
 
-        {/* Contributions */}
-        <div className="mb-8 p-4 bg-[#1b1c1f] rounded-md shadow-lg">
-          <h3 className="text-xl font-semibold text-white mb-3">Contributions</h3>
-          <ul className="list-disc list-inside text-md text-gray-300 leading-relaxed space-y-2">
-            {contributions.map((contribution, index) => (
-              <li key={index}>{contribution}</li>
-            ))}
-          </ul>
-        </div>
+        {/* Dynamic Project Info Section */}
+        {projectInfo && projectInfo.length > 0 && projectInfo.map((infoSection, index) => (
+          <div key={index} className="mb-8 p-4 bg-[#1b1c1f] rounded-md shadow-lg">
+            <h3 className="text-xl font-semibold text-white mb-4">{infoSection.title}</h3>
+            <ul className="list-disc pl-6 space-y-3 text-md text-gray-300 leading-relaxed">
+              {infoSection.list.map((item, idx) => (
+                <li
+                  key={idx}
+                  className="p-2 bg-transparent rounded-lg hover:bg-[#2e2e32] transition-colors duration-200"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
         {/* Professional Growth */}
         <div className="p-4 bg-[#1b1c1f] rounded-md shadow-lg">

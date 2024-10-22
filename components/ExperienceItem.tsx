@@ -11,7 +11,7 @@ interface ExperienceItemProps {
   type: string;
   shortOverview: string;
   projectOverview: string;
-  contributions: string[];
+  projectInfo: { title: string; list: string[] }[];
   professionalGrowth: string;
   date: string;
   stack: string[];
@@ -25,7 +25,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   type,
   shortOverview,
   projectOverview,
-  contributions,
+  projectInfo,
   professionalGrowth,
   date,
   stack,
@@ -70,6 +70,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
       card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
     }
   };
+
 
   return (
     <>
@@ -129,7 +130,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
         position={position}
         type={type}
         projectOverview={projectOverview}
-        contributions={contributions}
+        projectInfo={projectInfo}
         professionalGrowth={professionalGrowth}
         date={date}
         stack={stack}
