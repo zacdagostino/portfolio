@@ -1,26 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ExperienceItem from './ExperienceItem';
+import { ExperienceData } from '../types/interfaces'; // Import ExperienceData
 
 interface TimelineProps {
-  experiences: Array<{
-    title: string;
-    projectName: string;
-    position: string;
-    type: string;
-    shortOverview: string;
-    projectOverview: string;
-    projectInfo: { title: string; list: string[] }[]; // Updated to handle projectInfo
-    professionalGrowth: string;
-    date: string;
-    stack: string[];
-    detailedInfo?: string;
-  }>;
+  experiences: ExperienceData[]; // Use the shared ExperienceData interface
 }
 
 const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
   const [activeIndex, setActiveIndex] = useState(0); // Tracks the current active item
   const progressBarRef = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,8 +34,7 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
       if (progressBarRef.current) {
         const isLastItemVisible = experienceItems[experienceItems.length - 1].getBoundingClientRect().top <= middleOfScreen;
 
-        const progressHeight = isLastItemVisible ? 100 :((currentActiveIndex) / experienceItems.length) * 100;
-
+        const progressHeight = isLastItemVisible ? 100 : ((currentActiveIndex) / experienceItems.length) * 100;
 
         progressBarRef.current.style.height = `${progressHeight}%`;
       }

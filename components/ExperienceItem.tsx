@@ -3,23 +3,12 @@ import { motion } from 'framer-motion';
 import StackList from './StackList'; // Import the StackList component
 import { FaChevronDown } from 'react-icons/fa'; // Icons for the button
 import Modal from './Modal'; // Import the Modal component
+import { ExperienceData } from '../types/interfaces';
 
-interface ExperienceItemProps {
-  title: string;
-  projectName: string;
-  position: string;
-  type: string;
-  shortOverview: string;
-  projectOverview: string;
-  projectInfo: { title: string; list: string[] }[];
-  professionalGrowth: string;
-  date: string;
-  stack: string[];
-  detailedInfo?: string; // Optional detailed information
-}
 
-const ExperienceItem: React.FC<ExperienceItemProps> = ({
-  title,
+
+
+const ExperienceItem: React.FC<ExperienceData> = ({
   projectName,
   position,
   type,
@@ -29,7 +18,6 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   professionalGrowth,
   date,
   stack,
-  detailedInfo,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal open/close
   const cardRef = useRef<HTMLDivElement>(null);
@@ -125,10 +113,10 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={title}
         projectName={projectName}
         position={position}
         type={type}
+        shortOverview={shortOverview}
         projectOverview={projectOverview}
         projectInfo={projectInfo}
         professionalGrowth={professionalGrowth}

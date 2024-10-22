@@ -2,22 +2,10 @@ import React, { useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import StackList from './StackList';
+import { ExperienceData } from '../types/interfaces'; // Import the ExperienceData interface
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  projectName: string;
-  position: string;
-  type: string;
-  projectOverview: string;
-  projectInfo: { title: string; list: string[] }[]; // Updated to handle projectInfo
-  professionalGrowth: string;
-  date: string;
-  stack: string[];
-}
-
-const Modal: React.FC<ModalProps> = ({
+// Update the component to accept ExperienceData props
+const Modal: React.FC<ExperienceData & { isOpen: boolean; onClose: () => void }> = ({
   isOpen,
   onClose,
   projectName,
