@@ -7,12 +7,12 @@ interface StackListProps {
 
 const StackList: React.FC<StackListProps> = ({ technologies }) => {
   return (
-    <div className="stack-list-container bg-[#1b1c1f] p-4 rounded-md shadow-sm">
+    <div className="stack-list-container p-4 bg-[#1b1c1f] rounded-md shadow-sm w-max">
       {/* Stack label */}
       <h4 className="text-sm font-medium text-gray-300 mb-2 tracking-wide">Stack</h4>
 
-      {/* Responsive grid layout with dynamic columns */}
-      <div className="stack-list grid grid-cols-[repeat(auto-fit,minmax(60px,1fr))] gap-2">
+      {/* Make the stack list flex for horizontal layout and compact spacing */}
+      <div className="stack-list flex space-x-5">
         {technologies.map((tech, index) => (
           <StackLogo key={index} tech={tech} />
         ))}
