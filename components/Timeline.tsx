@@ -2,7 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import ExperienceItem from './ExperienceItem';
 
 interface TimelineProps {
-  experiences: Array<{ title: string; description: string; date: string; stack: string[] }>;
+  experiences: Array<{
+    title: string;
+    projectName: string;
+    position: string;
+    type: string;
+    shortOverview: string;
+    projectOverview: string;
+    contributions: string[];
+    professionalGrowth: string;
+    date: string;
+    stack: string[];
+    detailedInfo?: string;
+  }>;
 }
 
 const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
