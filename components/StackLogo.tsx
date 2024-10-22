@@ -10,6 +10,7 @@ const normalizedTechNames: { [key: string]: string } = {
   "HTML": "Html5",
   "CSS": "Css3",
   "JavaScript": "Javascript",
+  "Wix API": "Wix",
 };
 
 // Techs without logos on SimpleIcons or with custom local logos
@@ -18,6 +19,12 @@ const noLogoTechs: string[] = ["Zustand"]; // Add Velo to noLogoTechs
 // Custom logos for techs without SimpleIcons logos
 const customLogos: { [key: string]: string } = {
   "Velo": "/assets/logos/velo.png",  // Path to the Velo logo in your project
+  "RDFLib": "/assets/logos/rdf.png",
+  "SPARQL": "/assets/logos/sparql.png",
+  "SHACL": "/assets/logos/shacl.png",
+  "Stable Baselines3": "/assets/logos/stable.webp",
+  "Java": "/assets/logos/java.svg",
+
 };
 
 const StackLogo: React.FC<StackLogoProps> = ({ tech }) => {

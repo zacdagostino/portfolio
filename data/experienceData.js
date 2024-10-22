@@ -122,6 +122,6 @@ export const experienceData = [
     ,},],
     professionalGrowth: 'This project honed my skills in full-stack development, backend server management, and real-time code evaluation. I gained significant experience integrating dynamic code execution with responsive UI design.',
     date: '2023',
-    stack: ['Java', 'Python', 'HTML', 'CSS', 'socketserver', 'subprocess'],
+    stack: ['Java', 'Python', 'HTML', 'CSS'],
 }
 ];

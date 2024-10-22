@@ -5,9 +5,6 @@ import { FaChevronDown } from 'react-icons/fa'; // Icons for the button
 import Modal from './Modal'; // Import the Modal component
 import { ExperienceData } from '../types/interfaces';
 
-
-
-
 const ExperienceItem: React.FC<ExperienceData> = ({
   projectName,
   position,
