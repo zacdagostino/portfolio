@@ -1,48 +1,11 @@
 "use client";
 import { useEffect } from "react";
 import Timeline from "@/components/Timeline"; // adjust path as needed
+import { experienceData } from "@/data/experienceData"; // Import the data
+
 
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
-    })();
-  }, []);
-
-  // Timeline data
-  const experienceData = [
-    {
-      title: 'Frontend Developer Intern',
-      description: 'Developed responsive UI components and collaborated with backend engineers.',
-      date: 'Jan 2023 - Jun 2023',
-      stack: ['React', 'CSS', 'JavaScript'],
-    },
-    {
-      title: 'Computer Science Degree',
-      description: 'Studied core computer science topics with a focus on web development.',
-      date: '2020 - 2023',
-      stack: ['JavaScript', 'Python', 'HTML', 'CSS'],
-    },
-    {
-      title: 'Freelance Web Developer',
-      description: 'Built and maintained websites for small businesses.',
-      date: 'Aug 2020 - Present',
-      stack: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
-    },
-    {
-      title: 'Fullstack Developer Bootcamp',
-      description: 'Completed a rigorous bootcamp focusing on MERN stack development.',
-      date: '2022',
-      stack: ['MongoDB', 'Express', 'React', 'Node.js'],
-    },
-    {
-      title: 'React Native Developer',
-      description: 'Developed mobile applications for both iOS and Android using React Native.',
-      date: 'Mar 2021 - Aug 2021',
-      stack: ['React Native', 'Expo', 'JavaScript'],
-    },
-  ];
+ 
 
   return (
     <main className="app main">
