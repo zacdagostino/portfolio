@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+html {
+  --duration: 0.3s;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-color: #000000; */
+  background-color: #1b1c1f;
+}
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.main:before {
+  /* background: radial-gradient(circle, rgba(24, 24, 24, 0) 0, #000000 100%); */
+  background: radial-gradient(circle, rgba(24, 24, 24, 0) 0, #000000 100%);
+  position: absolute;
+  opacity: 0.1;
+  content: "";
+  z-index: -1;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+}
+
+.main:after {
+  content: "";
+  background-image: url("/assets/images/grid.svg");
+  z-index: -2;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  opacity: 0.6;
+}
+
+.grain {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
+  height: 300%;
+  width: 300%;
+  position: fixed;
+  z-index: 1;
+  opacity: 0.06;
+  pointer-events: none;
+  animation: animateGrain 8s steps(10) infinite;
+}
+
+@keyframes animateGrain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, -20%);
+  }
+  30% {
+    transform: translate(-5%, -10%);
+  }
+  40% {
+    transform: translate(-15%, -20%);
+  }
+
+  50% {
+    transform: translate(-5%, -10%);
+  }
+  60% {
+    transform: translate(-15%, -20%);
+  }
+  70% {
+    transform: translate(-5%, -10%);
+  }
+  80% {
+    transform: translate(-15%, -20%);
+  }
+  90% {
+    transform: translate(-5%, -10%);
+  }
+  100% {
+    transform: translate(-15%, -20%);
+  }
+}
+
+.glow {
+  text-shadow: 1px 1px 30px #ffffff70, 1px 1px 10px #ffffff4d;
+}
+
+/* Tailwind Styles */
+
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+
+.experience-item {
+  background-color: rgba(255, 255, 255, 0); /* Fully transparent by default */
+  border: 0.2px solid rgba(255, 255, 255, 0); /* Transparent border */
+  backdrop-filter: blur(0px); /* No blur by default */
+  transition: background-color 0.4s ease, border 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.experience-item:hover {
+  background-color: rgba(255, 255, 255, 0.027); /* Semi-transparent white on hover */
+  border: 0.2px solid rgba(255, 255, 255, 0.4); /* White border on hover */
+  backdrop-filter: blur(10px); /* Add a glass-like blur effect on hover */
+}
+
+
+.experience-item .shine-effect {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.experience-item:hover .shine-effect {
+  opacity: .15;
+}
+
+.timeline-container {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline-progress-bar {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+
+.timeline-progress {
+  background-color: #10b981; /* Green color */
+  width: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: height 0.3s ease; /* Smooth height transition */
+}
+
+.experience-list {
+  position: relative;
+}
+
+.experience-item-wrapper {
+  display: flex;
+  position: relative;
+}
+
+
+
+.timeline-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db; /* Default gray border */
+  background-color: #fff;
+  position: absolute;
+  left: -22px;
+  top: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for colors */
+}
+
+.timeline-circle.checked {
+  animation: checkAnimation 0.4s ease forwards; /* Apply animation */
+}
+
+@keyframes checkAnimation {
+  0% {
+    background-color: #fff;
+    border-color: #d1d5db;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3); /* Pop effect */
+  }
+  100% {
+    background-color: #10b981; /* Final green color */
+    border-color: #10b981;
+    transform: scale(1); /* Reset size */
+  }
+}
+
+
+.timeline-circle.bg-green-500 {
+  background-color: #10b981; /* Green for active circles */
+  border-color: #10b981;
+}
+
+
+
+.experience-item-wrapper.checked .timeline-circle {
+  background-color: #10b981; /* Make the circle green when checked */
+  border-color: #10b981;
+}
+
+/* Custom Global Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Make the track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* Faint white color for the thumb */
+  border-radius: 10px; /* Rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Slightly darker on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, 0.6); /* Even darker when clicked */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Remove scrollbar arrows (for old browsers) */
+::-webkit-scrollbar-button {
+  display: none;
+}
