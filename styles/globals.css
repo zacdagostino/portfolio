@@ -2,36 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    @apply scroll-smooth;
-  }
-}
-
-html {
-  --duration: 0.3s;
-  scroll-behavior: smooth;
-}
-
 body {
   /* background-color: #000000; */
   background-color: #1b1c1f;
 }
-html.lenis {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
+
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -185,6 +160,8 @@ html.lenis {
   position: relative;
 }
 
+
+
 .timeline-circle {
   width: 12px;
   height: 12px;
@@ -228,4 +205,37 @@ html.lenis {
 .experience-item-wrapper.checked .timeline-circle {
   background-color: #10b981; /* Make the circle green when checked */
   border-color: #10b981;
+}
+
+/* Custom Global Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Make the track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* Faint white color for the thumb */
+  border-radius: 10px; /* Rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Slightly darker on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, 0.6); /* Even darker when clicked */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Remove scrollbar arrows (for old browsers) */
+::-webkit-scrollbar-button {
+  display: none;
 }
