@@ -5,6 +5,7 @@ export const experienceData = [
     position: 'Frontend Developer Intern',
     shortOverview: 'Led frontend development for a real-time AI-chat application prototype using Next.js and React.',
     projectOverview: 'This project involved developing a Retrieval Augmented Generation AI-chat application prototype for real-time messaging and knowledge retrieval within the institute.',
+    githubLink: 'https://github.com/nlp-tlp/retrievalAugGen',
     projectInfo: [
       { title: "Front-End Development Role", 
         list: [
@@ -94,6 +95,7 @@ export const experienceData = [
     position: 'Full Stack Developer',
     shortOverview: 'Co-developed DOGGLE, a daily dog breed guessing game with a points system and leaderboard.',
     projectOverview: 'Developed a daily guessing game with a dynamic points system and a leaderboard for community engagement.',
+    githubLink:'https://github.com/thethyka/doggle',
     projectInfo: [{ title: "Core Contributions", list: [
       "Collaborated closely with a partner through all development phases, employing Agile methodologies for efficient project management and high-quality output.",
       "Led Frontend Development: Directed front-end development, crafting intuitive interfaces with JavaScript, CSS, and HTML, ensuring a responsive and visually appealing user experience.",

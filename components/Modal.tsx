@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaGithub, FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import StackList from './StackList';
 import { ExperienceData } from '../types/interfaces'; // Import the ExperienceData interface
@@ -12,6 +12,7 @@ const Modal: React.FC<ExperienceData & { isOpen: boolean; onClose: () => void }>
   position,
   type,
   projectOverview,
+  githubLink,
   projectInfo,
   professionalGrowth,
   date,
@@ -35,6 +36,8 @@ const Modal: React.FC<ExperienceData & { isOpen: boolean; onClose: () => void }>
 
   if (!isOpen) return null;
 
+  
+
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-70 z-50 backdrop-blur-md flex justify-center items-start transition-opacity duration-300 ease-in-out"
@@ -56,6 +59,21 @@ const Modal: React.FC<ExperienceData & { isOpen: boolean; onClose: () => void }>
         >
           <FaTimes className="h-6 w-6" />
         </button>
+
+       {/* Prominent GitHub Link */}
+       {githubLink && (
+          <div className="mb-6">
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-green-500 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-green-400 transition duration-300 ease-in-out"
+            >
+              <FaGithub className="mr-2 h-6 w-6" />
+              View on GitHub
+            </a>
+          </div>
+        )}
 
         {/* Project Title and Type */}
         <div className="mb-6">

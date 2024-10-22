@@ -9,6 +9,7 @@ export interface ProjectInfo {
     position: string;
     shortOverview: string;
     projectOverview: string;
+    githubLink: string;
     projectInfo: ProjectInfo[];
     professionalGrowth: string;
     date: string;
