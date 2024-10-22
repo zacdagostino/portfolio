@@ -5,7 +5,12 @@ import { experienceData } from "@/data/experienceData"; // Import the data
 
 
 export default function Home() {
- 
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
 
   return (
     <main className="app main">
