@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Timeline from "@/components/Timeline"; // adjust path as needed
 import { experienceData } from "@/data/experienceData"; // Import the data
 import SkillsSection from "@components/SkillsSection"; // Import the SkillsSection component
-
+import EducationSection from "@/components/EducationSection"; // Import the EducationSection component
 
 export default function Home() {
   useEffect(() => {
@@ -25,6 +25,11 @@ export default function Home() {
       {/* Timeline Section */}
       <section className="w-screen p-8">
         <Timeline experiences={experienceData} />
+      </section>
+
+      {/* Education Section */}
+      <section className="w-screen p-8">
+        <EducationSection /> {/* Add the EducationSection */}
       </section>
 
       {/* Skills Section */}
