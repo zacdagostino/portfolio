@@ -4,6 +4,11 @@ import Timeline from "@/components/Timeline"; // adjust path as needed
 import { experienceData } from "@/data/experienceData"; // Import the data
 import SkillsSection from "@components/SkillsSection"; // Import the SkillsSection component
 import EducationSection from "@/components/EducationSection"; // Import the EducationSection component
+import ParallaxText from "@components/ParalaxText.jsx";
+import { useRef } from "react";
+import { useScroll } from "framer-motion";
+import Lenis from 'lenis';
+
 
 export default function Home() {
   useEffect(() => {
@@ -13,13 +18,49 @@ export default function Home() {
     })();
   }, []);
 
+  const container = useRef();
+
+  const { scrollYProgress } = useScroll({
+
+    target: container,
+
+    offset: ['start end', 'end start']
+
+  })
+
+  useEffect( () => {
+
+    const lenis = new Lenis()
+
+
+
+    function raf(time) {
+
+      lenis.raf(time)
+
+      requestAnimationFrame(raf)
+
+    }
+
+
+
+    requestAnimationFrame(raf)
+
+  }, [])
+
+
+
   return (
-    <main className="app main">
+    <main className="app main 'overflow-hidden'">
       {/* Introduction Section */}
       <section className="flex justify-center items-center h-screen w-screen p-4">
         <h1 className="glow text-white text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
           Hello, I'm Zac. <br /> A Fullstack Developer
         </h1>
+      </section>
+      {/* Parallax Section */}
+      <section className="w-screen ">
+        <ParallaxText scrollYProgress={scrollYProgress}/>
       </section>
 
       {/* Timeline Section */}
