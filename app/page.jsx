@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Timeline from "@/components/Timeline"; // adjust path as needed
 import { experienceData } from "@/data/experienceData"; // Import the data
+import SkillsSection from "@components/SkillsSection"; // Import the SkillsSection component
 
 
 export default function Home() {
@@ -14,19 +15,25 @@ export default function Home() {
 
   return (
     <main className="app main">
+      {/* Introduction Section */}
       <section className="flex justify-center items-center h-screen w-screen p-4">
         <h1 className="glow text-white text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
           Hello, I'm Zac. <br /> A Fullstack Developer
         </h1>
       </section>
 
-      {/* Update this section to dynamically adjust its height */}
+      {/* Timeline Section */}
       <section className="w-screen p-8">
-        {/* Timeline Component */}
         <Timeline experiences={experienceData} />
       </section>
-      <section className="h-screen w-screen p-8">
 
+      {/* Skills Section */}
+      <section className="w-screen p-8">
+        <SkillsSection />
+      </section>
+
+      <section className="h-screen w-screen p-8">
+        {/* Additional sections can go here */}
       </section>
     </main>
   );
