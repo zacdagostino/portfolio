@@ -16,7 +16,7 @@ const SkillsSection: React.FC = () => {
       <motion.h2
         className="text-4xl font-extrabold text-white text-center mb-12"
         initial={{ opacity: 1, y: -50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: -50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
         transition={{ duration: 0.8 }}
       >
         Skills
