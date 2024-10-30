@@ -9,6 +9,8 @@ import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import Lenis from 'lenis';
 
+import RandomGrid from "@components/RandomGrid";
+
 
 export default function Home() {
   useEffect(() => {
@@ -54,10 +56,9 @@ export default function Home() {
     <main className="app main 'overflow-hidden'">
       {/* Introduction Section */}
       <section className="flex justify-center items-center h-screen w-screen p-4">
-        <h1 className="glow text-white text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
-          Hello, I'm Zac. <br /> A Fullstack Developer
-        </h1>
+        <RandomGrid/>
       </section>
+    
       {/* Parallax Section */}
       <section className="w-screen ">
         <ParallaxText scrollYProgress={scrollYProgress}/>
